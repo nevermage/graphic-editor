@@ -1,0 +1,46 @@
+
+
+body {
+    background: #e5e5e5;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fff;
+    position: absolute;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    height: 500px;
+    width: 800px;
+    top: 15%;
+    left: calc(50% - 421px);
+}
+.imgSelector, .addFigures {
+    padding: 10px;
+}
+.imgContainer {
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: #e5e5e5;
+}
+.imgContainer img {
+    max-height: 400px;
+    height: 100%;
+}
+.addFigures select {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.figureForm{
+    display: none;
+}
+.addFigures input {
+    margin-bottom: 5px;
+    width: 80px;
+}
+.addFigures p {
+    margin: 0;
+}
