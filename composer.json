@@ -1,0 +1,19 @@
+{
+  "name": "nevermage/bihunov-graphic-editor",
+  "authors": [
+    {
+      "name": "nevermage",
+      "email": "maksim14032002@gmail.com"
+    }
+  ],
+  "require": {
+    "ext-gd": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Classes\\": "Classes/",
+      "Classes\\Figures\\": "Classes/Figures/",
+      "App\\Controllers\\": "App/Controllers"
+    }
+  }
+}
