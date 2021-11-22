@@ -8,12 +8,12 @@
     <script src="js/image.js"></script>
 </head>
 <body>
-<div class="container" action="upload.php" method="post" enctype="multipart/form-data">
+<form class="container" action="upload.php" method="post" enctype="multipart/form-data">
     <div class="imgSelector">
         <div class="imgContainer">
             <img id="imgOutput" src="" alt="">
         </div>
-        <input id="imgLoader" name="zxc" type="file" onchange="previewImg(event)">
+        <input id="imgLoader" name="inputImg" type="file" onchange="previewImg(event)">
     </div>
     <div class="addFigures">
         <select id="selectFigure" onchange="figureForm()">
@@ -41,7 +41,7 @@
             <input type="number">
             <input type="number">
             <br>
-            <button onclick="uploadImage()">load</button>
+            <button onclick="">add figure</button>
 <!--            <input type="submit" value="Загрузить">-->
         </div>
         <div class="figureForm" id="figureForm2">
@@ -59,6 +59,7 @@
         </div>
 
     </div>
-</div>
+    <button onclick="uploadImage()">load</button>
+</form>
 </body>
 </html>

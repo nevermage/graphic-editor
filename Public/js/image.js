@@ -2,9 +2,9 @@
 const previewImg = (event) => {
     if(event.target.files.length > 0){
         imgOutput.src = URL.createObjectURL(event.target.files[0]);
-        l = imgLoader.value;
-        l.split('\\').pop;
-        console.log(l);
+        // l = imgLoader.value;
+        // l.split('\\').pop;
+        // console.log(l);
     }
 }
 
@@ -23,13 +23,15 @@ const figureForm = () => {
 }
 
 const uploadImage = () => {
-    let img = imgLoader.value;
+    let imgsrc = imgOutput.src;
+    let blob =  fetch(imgsrc).then(r => r.blob());
+    console.log(blob);
     $.ajax({
         async: false,
         type: "POST",
         url: "upload.php",
         dataType:"text",
-        data: 'zxc=123',
+        data: 'zxc=' + blob,
         success: function (response) {
             console.log(response);
         }
