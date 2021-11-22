@@ -11,7 +11,7 @@ body {
     padding: 20px;
     border-radius: 5px;
     border: 1px solid #555;
-    height: 500px;
+    height: 550px;
     width: 800px;
     top: 15%;
     left: calc(50% - 421px);
@@ -43,4 +43,22 @@ body {
 }
 .addFigures p {
     margin: 0;
+}
+.rightBox {
+    display: grid;
+    grid-template-rows: 1fr min-content;
+}
+.authorInput {
+    font-size: 18px;
+    padding: 2px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+.authorForm button{
+    font-size: 16px;
+    padding: 5px;
+    width: 100px;
+}
+.authorForm p {
+    font-size: 19px;
 }
