@@ -33,7 +33,9 @@ const uploadImage = () =>{
         data: formData,
         processData: false,
         contentType: false,
-        success: function(response) {},
+        success: function(response) {
+            console.log(response);
+        },
         error: function(jqXHR, textStatus, errorMessage) {
             console.log(errorMessage);
         }

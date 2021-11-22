@@ -8,7 +8,7 @@
     <script src="js/image.js"></script>
 </head>
 <body>
-<form class="container" action="upload.php" id="mainForm" method="post" enctype="multipart/form-data">
+<div class="container">
     <div class="imgSelector">
         <div class="imgContainer">
             <img id="imgOutput" src="" alt="">
@@ -38,7 +38,6 @@
                 <input type="number">
                 <br>
                 <button onclick="">add figure</button>
-                <!--            <input type="submit" value="Загрузить">-->
             </div>
             <div class="figureForm" id="figureForm2">
                 <p>точка 1</p>
@@ -48,16 +47,15 @@
                 <input type="number">
                 <input type="number">
                 <br>
-                <!--            <input type="submit" value="Загрузить">-->
             </div>
         </div>
         <div class="authorForm">
             <p>Ваше имя:</p>
             <input type="text" name="author" class="authorInput">
             <br>
-            <input type="submit" form="mainForm" onclick="" value="Загрузить">
+            <button>Загрузить</button>
         </div>
     </div>
-</form>
+</div>
 </body>
 </html>
