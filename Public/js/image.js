@@ -156,10 +156,7 @@ const drawFigure = (type) => {
 }
 
 const saveToDatabase = () => {
-    let data = {
-        author : authorName.value,
-        svg: svgCheckBox.checked,
-    };
+    let data = {author : authorName.value};
     const GetResponse = async (url) => {
         const response = await fetch(url, {
             method: "POST",
@@ -173,5 +170,5 @@ const saveToDatabase = () => {
         // console.log(json);
     }
     GetResponse('saveToDatabase');
-    // window.location.href = "http://zxc.com/allFigures";
+    window.location.href = "http://zxc.com/allFigures";
 }

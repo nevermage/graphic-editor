@@ -137,8 +137,6 @@
                    oninput="this.value=this.value.replace(/[^A-Za-z\s]/g,'');">
             <br>
             <button onclick="saveToDatabase()">Загрузить</button>
-            <input type="checkbox" id="svgCheckBox">
-            <label for="svgCheckBox">сохранить как svg</label>
         </div>
     </div>
 </div>
