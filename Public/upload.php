@@ -12,18 +12,26 @@ if ($newest_file === '..') {
     $l = intval(pathinfo($newest_file, PATHINFO_FILENAME)) + 1;
 }
 $newPng = "img/$l.png";
-
-$dsn = 'mysql:dbname=testTask;host=127.0.0.1';
-$user = 'root';
-$password = 'root';
-$pdo = new PDO($dsn, $user, $password);
-$sql = "INSERT INTO `testTask`.`images` (`author`, `image`, `date`) 
-        VALUES ('$newPng', '" . $_POST['author'] . "', date(curdate()));";
-$stmt = $pdo->query($sql);
+//
+//$dsn = 'mysql:dbname=testTask;host=127.0.0.1';
+//$user = 'root';
+//$password = 'root';
+//$pdo = new PDO($dsn, $user, $password);
+//$sql = "INSERT INTO `testTask`.`images` (`author`, `image`, `date`)
+//        VALUES ('$newPng', '" . $_POST['author'] . "', date(curdate()));";    1111111
+//$stmt = $pdo->query($sql);
 
 //$result = $stmt->fetchAll();
 //var_dump($result);
 
-$im = imagecreatefrompng($_FILES['inputImg']['tmp_name']);
+$im = imagecreatefrompng($_FILES['fileToUpload']['tmp_name']);
+$width  = imagesx($im);
+$height = imagesy($im);
+
+$white = imagecolorallocate($im, 255, 255, 255);
+$red = imagecolorallocate($im, 255, 0, 0);
+imagerectangle($im,104, 104, 705, 700, $white);
+
 imagepng($im, $newPng);
+//imagepng($im);
 imagedestroy($im);

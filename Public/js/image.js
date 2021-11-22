@@ -22,18 +22,20 @@ const figureForm = () => {
     hideOtherForms(selectFigure.value);
 }
 
-const uploadImage = () => {
-    let imgsrc = imgOutput.src;
-    let blob =  fetch(imgsrc).then(r => r.blob());
-    console.log(blob);
+const uploadImage = () =>{
+    let blobFile = imgLoader.files[0];
+    let formData = new FormData();
+    formData.append("fileToUpload", blobFile);
+
     $.ajax({
-        async: false,
-        type: "POST",
         url: "upload.php",
-        dataType:"text",
-        data: 'zxc=' + blob,
-        success: function (response) {
-            console.log(response);
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {},
+        error: function(jqXHR, textStatus, errorMessage) {
+            console.log(errorMessage);
         }
     });
 }

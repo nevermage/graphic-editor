@@ -54,7 +54,7 @@ body {
     width: 200px;
     margin-bottom: 10px;
 }
-.authorForm button{
+.authorForm input{
     font-size: 16px;
     padding: 5px;
     width: 100px;

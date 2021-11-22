@@ -8,12 +8,13 @@
     <script src="js/image.js"></script>
 </head>
 <body>
-<form class="container" action="upload.php" method="post" enctype="multipart/form-data">
+<form class="container" action="upload.php" id="mainForm" method="post" enctype="multipart/form-data">
     <div class="imgSelector">
         <div class="imgContainer">
             <img id="imgOutput" src="" alt="">
         </div>
         <input id="imgLoader" name="inputImg" type="file" onchange="previewImg(event)">
+        <input type="button" onclick="uploadImage()" value="Выбрать">
     </div>
     <div class="rightBox">
         <div class="addFigures">
@@ -35,12 +36,6 @@
                 <p>точка 2</p>
                 <input type="number">
                 <input type="number">
-                <p>точка 3</p>
-                <input type="number">
-                <input type="number">
-                <p>точка 4</p>
-                <input type="number">
-                <input type="number">
                 <br>
                 <button onclick="">add figure</button>
                 <!--            <input type="submit" value="Загрузить">-->
@@ -52,9 +47,6 @@
                 <p>точка 2</p>
                 <input type="number">
                 <input type="number">
-                <p>точка 3</p>
-                <input type="number">
-                <input type="number">
                 <br>
                 <!--            <input type="submit" value="Загрузить">-->
             </div>
@@ -63,7 +55,7 @@
             <p>Ваше имя:</p>
             <input type="text" name="author" class="authorInput">
             <br>
-            <button onclick="uploadImage()">Загрузить</button>
+            <input type="submit" form="mainForm" onclick="" value="Загрузить">
         </div>
     </div>
 </form>
