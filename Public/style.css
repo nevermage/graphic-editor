@@ -62,3 +62,42 @@ body {
 .authorForm p {
     font-size: 19px;
 }
+
+.allFiguresList {
+    padding: 10px;
+    border-radius: 9px;
+    width: 50%;
+    margin: 100px auto;
+    background: #555555;
+}
+
+.Figure {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 10px;
+    background: #666666;
+    border-radius: 9px;
+}
+.Figure:hover {
+    background: #777777;
+}
+
+.allFiguresListImageContainer {
+    padding: 10px;
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+}
+.allFiguresListImageContainer img {
+    max-height: 300px;
+    height: 100%;
+}
+.figureAuthor {
+    padding: 10px 60px;
+}
+.figureDate {
+    padding: 10px;
+}
+.Figure h1 {
+    color: #e5e5e5;
+}
