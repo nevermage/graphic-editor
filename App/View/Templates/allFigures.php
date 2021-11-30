@@ -4,11 +4,12 @@
         <div class="allFiguresListImageContainer">
             <img src="<?= $image['image'] ?>">
         </div>
+        <div class="svgImageContainer">
+            <?= $image['svg'] ?>
+        </div>
         <div class="figureAuthor">
             <h1><?= $image['author'] ?></h1>
-        </div>
-        <div class="figureDate">
-            <h1><?= $image['date'] ?></h1>
+            <p><?= $image['date'] ?></p>
         </div>
     </div>
     <?php endforeach; ?>

@@ -13,17 +13,11 @@ class Pictures
         $images = $pdo->query($sql);
         return $images;
     }
-    public function saveToDatabase($image, $author)
+    public function saveToDatabase($image, $author, $svg)
     {
-        $z = json_decode(file_get_contents('php://input'), true);
-        if ($z['svg'] == 1) {
-            //create svg from $image file that given to parameter that now in folder
-            //after that $image shoud take 'path to new created svg file'
-
-        }
         $pdo = new Database();
-        $sql = "INSERT INTO `testTask`.`images` (`image`, `author`, `date`)
-        VALUES ('$image', '" . $author . "', date(curdate()));";
+        $sql = "INSERT INTO `testTask`.`images` (`image`, `author`, `date`, `svg`)
+        VALUES ('$image', '$author', date(curdate()), '$svg');";
         $pdo->query($sql);
     }
 }
