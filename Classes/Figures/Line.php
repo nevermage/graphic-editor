@@ -16,9 +16,8 @@ class Line extends Figure
         $this->x2 = $dots['x2'];
         $this->y2 = $dots['y2'];
     }
-    public function addFigure($imgFile)
+    public function addFigure()
     {
         imageline($this->image,$this->x1, $this->y1, $this->x2, $this->y2, $this->color);
-        imagepng($this->image, $imgFile);
     }
 }

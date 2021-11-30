@@ -37,7 +37,6 @@
                        oninput="this.value=this.value.replace('/^\d+$/','');">
                 <br>
                 <button onclick="drawFigure('Square')">нарисовать фигуру</button>
-                <button onclick="fetchTest()">тест</button>
             </div>
             <div class="figureForm" id="figureForm2">
                 <p>точка 1</p>
@@ -136,7 +135,7 @@
             <input type="text" id="authorName" class="authorInput"
                    oninput="this.value=this.value.replace(/[^A-Za-z\s]/g,'');">
             <br>
-            <button onclick="saveToDatabase()">Загрузить</button>
+            <button onclick="saveToDatabase()">Сохранить</button>
         </div>
     </div>
 </div>

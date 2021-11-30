@@ -25,17 +25,7 @@ class Image
 
     public function __construct()
     {
-        if (!isset($_FILES['fileToUpload']['tmp_name'])) {
-            $x = pathinfo($_SESSION['fileName']);
-            $this->imageType = $x['extension'];
-            $this->fileName = $_SESSION['fileName'];
-            if ($this->imageType == 'png') {
-                $this->file = imagecreatefrompng($this->fileName);
-            }
-            if ($this->imageType == 'jpg') {
-                $this->file = imagecreatefromjpeg($this->fileName);
-            }
-        } else {
+        if (isset($_FILES['fileToUpload']['tmp_name'])) {
             $this->imageType = exif_imagetype($_FILES['fileToUpload']['tmp_name']);
             if ($this->imageType == 3) {
                 $this->file = imagecreatefrompng($_FILES['fileToUpload']['tmp_name']);
@@ -46,25 +36,32 @@ class Image
                 $this->file = imagecreatefromjpeg($_FILES['fileToUpload']['tmp_name']);
             }
             $this->fileName = $this->getNewImageName();
+
+        } else {
+            $x = pathinfo($_SESSION['fileName']);
+            $this->imageType = $x['extension'];
+            $this->fileName = $_SESSION['fileName'];
+            if ($this->imageType == 'png') {
+                $this->file = imagecreatefrompng($this->fileName);
+            }
+            if ($this->imageType == 'jpg') {
+                $this->file = imagecreatefromjpeg($this->fileName);
+            }
         }
         $this->savePicture();
-        $this->width = imagesx($this->file);
-        $this->height = imagesy($this->file);
+        $this->setSize();
     }
 
-    public function setPictureWidth(int $width)
+    public function setSize()
     {
-        $this->width = $width;
+        $this->width = imagesx($this->file);
+        $this->height = imagesy($this->file);
     }
     public function getPictureWidth()
     {
         return $this->width;
     }
 
-    public function setPictureHeight(int $height)
-    {
-        $this->height = $height;
-    }
     public function getPictureHeight()
     {
         return $this->height;
@@ -87,7 +84,6 @@ class Image
             $d = dir($path);
             while (false !== ($entry = $d->read())) {
                 $filepath = "{$path}/{$entry}";
-                // could do also other checks than just checking whether the entry is a file
                 if (is_file($filepath) && filectime($filepath) > $latest_ctime) {
                     $latest_ctime = filectime($filepath);
                     $latest_filename = $entry;
@@ -95,12 +91,17 @@ class Image
             }
             $l = intval(pathinfo($latest_filename, PATHINFO_FILENAME)) + 1;
         }
-        return "img/$l.png";
+        return "img/$l.$this->imageType";
     }
 
     public function savePicture()
     {
-        imagepng($this->file, $this->getName());
+        if ($this->imageType == 'png') {
+            imagepng($this->file, $this->getName());
+        }
+        if ($this->imageType == 'jpg') {
+            imagejpeg($this->file, $this->getName());
+        }
         $_SESSION['fileName'] = $this->getName();
     }
 
@@ -205,15 +206,27 @@ class Image
         }
         $Figure->setColor($color);
         $Figure->setDots($this->dots);
-        $Figure->addFigure($this->getName());
+        $Figure->addFigure();
+        $Figure->saveImage();
         $this->updateClassObject();
     }
 
+    public function generateSvg()
+    {
+        $base64 = base64_encode(file_get_contents($this->getName()));
+        $svg = '<svg width="' . $this->getPictureWidth() . '" height="' . $this->getPictureHeight() . '" '
+                  . 'xmlns="http://www.w3.org/2000/svg"> '
+                  . '<image href="data:image/png;base64,' . $base64
+                  . '" width="' . $this->getPictureWidth()
+                  . '" height="' . $this->getPictureHeight() . '"/>'
+                .'</svg>';
+        return $svg;
+    }
 
     public function saveToDatabase()
     {
         $save = new Pictures();
         $z = json_decode(file_get_contents('php://input'), true);
-        $save->saveToDatabase($this->fileName, $z['author']);
+        $save->saveToDatabase($this->fileName, $z['author'], $this->generateSvg());
     }
 }

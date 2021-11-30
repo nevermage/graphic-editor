@@ -156,7 +156,9 @@ const drawFigure = (type) => {
 }
 
 const saveToDatabase = () => {
-    let data = {author : authorName.value};
+    let data = {
+        author : authorName.value,
+    };
     const GetResponse = async (url) => {
         const response = await fetch(url, {
             method: "POST",
@@ -166,7 +168,7 @@ const saveToDatabase = () => {
             },
             body: JSON.stringify(data),
         })
-        const json =  await response.json();
+        // const json =  await response.json();
         // console.log(json);
     }
     GetResponse('saveToDatabase');
