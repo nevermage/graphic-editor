@@ -16,9 +16,8 @@ class Text extends Figure
         $this->text = $dots['text'];
         $this->font = intval($dots['font']);
     }
-    public function addFigure($imgFile)
+    public function addFigure()
     {
         imagefttext($this->image, $this->font, 0, $this->x1, $this->y1, $this->color, 'fonts/Calibri.ttf', $this->text) ;
-        imagepng($this->image, $imgFile);
     }
 }

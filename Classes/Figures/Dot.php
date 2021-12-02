@@ -11,9 +11,8 @@ class Dot extends Figure
         $this->x1 = $dots['x1'];
         $this->y1 = $dots['y1'];
     }
-    public function addFigure($imgFile)
+    public function addFigure()
     {
         imagesetpixel($this->image,$this->x1, $this->y1, $this->color);
-        imagepng($this->image, $imgFile);
     }
 }
