@@ -26,17 +26,21 @@ class Image
     public function __construct()
     {
         if (isset($_FILES['fileToUpload']['tmp_name'])) {
-            $this->imageType = exif_imagetype($_FILES['fileToUpload']['tmp_name']);
-            if ($this->imageType == 3) {
-                $this->file = imagecreatefrompng($_FILES['fileToUpload']['tmp_name']);
-                $this->imageType = 'png';
+            if ($this->imgValidation() == true) {
+                $this->imageType = exif_imagetype($_FILES['fileToUpload']['tmp_name']);
+                if ($this->imageType == 3) {
+                    $this->file = imagecreatefrompng($_FILES['fileToUpload']['tmp_name']);
+                    $this->imageType = 'png';
+                }
+                if ($this->imageType == 2) {
+                    $this->imageType = 'jpg';
+                    $this->file = imagecreatefromjpeg($_FILES['fileToUpload']['tmp_name']);
+                }
+                $this->fileName = $this->getNewImageName();
+            } else {
+                echo 'failed';
+                return;
             }
-            if ($this->imageType == 2) {
-                $this->imageType = 'jpg';
-                $this->file = imagecreatefromjpeg($_FILES['fileToUpload']['tmp_name']);
-            }
-            $this->fileName = $this->getNewImageName();
-
         } else {
             $x = pathinfo($_SESSION['fileName']);
             $this->imageType = $x['extension'];
@@ -50,6 +54,14 @@ class Image
         }
         $this->savePicture();
         $this->setSize();
+    }
+
+    public function imgValidation()
+    {
+        if(@is_array(getimagesize($_FILES['fileToUpload']['tmp_name']))) {
+            return true;
+        }
+        return false;
     }
 
     public function setSize()

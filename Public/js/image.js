@@ -24,6 +24,21 @@ const hideOtherForms = (e) => {
         }
     }
 }
+
+window.onload = function() {
+    deactivateButtons();
+}
+
+const activateButtons = () => {
+    drawFigureButton.disabled = false;
+    saveToDbButton.disabled = false;
+}
+
+const deactivateButtons = () => {
+    drawFigureButton.disabled = true;
+    saveToDbButton.disabled = true;
+}
+
 const figureForm = () => {
     let form = "figureForm" + selectFigure.value;
     document.getElementById(form).style.display = "block";
@@ -39,24 +54,32 @@ const uploadImage = () =>{
             method: "POST",
             body: formData,
         })
+        const json =  await response.text();
+        if (json == 'failed') {
+            deactivateButtons();
+            alert('Файл не является изображением');
+        } else {
+            activateButtons();
+        }
     }
     GetResponse('uploadImage');
 }
 
-const drawFigure = (type) => {
+const drawFigure = () => {
+    let type = selectFigure.value;
     let data;
-    if (type == "Square") {
+    if (type == 1) {
         data = {
-            type : type,
+            type : 'Square',
             color: selectColor.value,
             x1 : kvad1x.value,
             y1 : kvad1y.value,
             squareLength : squareeLength.value,
         };
     }
-    if (type == "Rectangle") {
+    if (type == 2) {
         data = {
-            type : type,
+            type : 'Rectangle',
             color: selectColor.value,
             x1 : rect1x.value,
             y1 : rect1y.value,
@@ -65,10 +88,10 @@ const drawFigure = (type) => {
             squareLength : squareeLength.value,
         };
     }
-    if (type == "Parallelogram") {
+    if (type == 3) {
         
         data = {
-            type : type,
+            type : 'Parallelogram',
             color: selectColor.value,
             x1 : paral1x.value,
             y1 : paral1y.value,
@@ -80,9 +103,9 @@ const drawFigure = (type) => {
             y4 : paral4y.value,
         };
     }
-    if (type == "Oval") {
+    if (type == 4) {
         data = {
-            type : type,
+            type : 'Oval',
             color: selectColor.value,
             x1 : oval1x.value,
             y1 : oval1y.value,
@@ -90,26 +113,26 @@ const drawFigure = (type) => {
             width : ovalW.value,
         }
     }
-    if (type == "Circle") {
+    if (type == 5) {
         data = {
-            type : type,
+            type : 'Circle',
             color: selectColor.value,
             x1 : circle1x.value,
             y1 : circle1y.value,
             radius : circleRad.value,
         }
     }
-    if (type == "Dot") {
+    if (type == 6) {
         data = {
-            type : type,
+            type : 'Dot',
             color: selectColor.value,
             x1 : dotX.value,
             y1 : dotY.value,
         }
     }
-    if (type == "Line") {
+    if (type == 7) {
         data = {
-            type : type,
+            type : 'Line',
             color: selectColor.value,
             x1 : line1x.value,
             y1 : line1y.value,
@@ -117,9 +140,9 @@ const drawFigure = (type) => {
             y2 : line2y.value,
         }
     }
-    if (type == "Triangle") {
+    if (type == 8) {
         data = {
-            type: type,
+            type: 'Triangle',
             color: selectColor.value,
             x1 : trian1x.value,
             y1 : trian1y.value,
@@ -129,9 +152,9 @@ const drawFigure = (type) => {
             y3 : trian3y.value,
         }
     }
-    if (type == "Text") {
+    if (type == 9) {
         data = {
-            type: type,
+            type: 'Text',
             color: selectColor.value,
             x1 : text1x.value,
             y1 : text1y.value,
@@ -139,7 +162,6 @@ const drawFigure = (type) => {
             font : fontSize.value,
         }
     }
-
     const GetResponse = async (url) => {
         const response = await fetch(url, {
             method: "POST",
@@ -168,9 +190,7 @@ const saveToDatabase = () => {
             },
             body: JSON.stringify(data),
         })
-        // const json =  await response.json();
-        // console.log(json);
     }
     GetResponse('saveToDatabase');
-    window.location.href = "http://zxc.com/allFigures";
+    window.location.href = "allFigures";
 }

@@ -36,7 +36,6 @@
                 <input id="squareeLength" type="number" min="1"
                        oninput="this.value=this.value.replace('/^\d+$/','');">
                 <br>
-                <button onclick="drawFigure('Square')">нарисовать фигуру</button>
             </div>
             <div class="figureForm" id="figureForm2">
                 <p>точка 1</p>
@@ -46,7 +45,6 @@
                 <input id="rect2x" type="number" min="1" oninput="checkIfDecimalValue(this.id, this.value)">
                 <input id="rect2y" type="number" min="1" oninput="checkIfDecimalValue(this.id, this.value)">
                 <br>
-                <button onclick="drawFigure('Rectangle')">нарисовать фигуру</button>
             </div>
             <div class="figureForm" id="figureForm3">
                 <p>точка 1</p>
@@ -62,7 +60,6 @@
                 <input id="paral4x" type="number" min="1" oninput="checkIfDecimalValue(this.id, this.value)">
                 <input id="paral4y" type="number" min="1" oninput="checkIfDecimalValue(this.id, this.value)">
                 <br>
-                <button onclick="drawFigure('Parallelogram')">нарисовать фигуру</button>
             </div>
             <div class="figureForm" id="figureForm4">
                 <p>центр фигуры</p>
@@ -75,7 +72,6 @@
                 <input id="ovalW" type="number" min="1"
                        oninput="this.value=this.value.replace('/^\d+$/','');">
                 <br>
-                <button onclick="drawFigure('Oval')">нарисовать фигуру</button>
             </div>
             <div class="figureForm" id="figureForm5">
                 <p>центр фигуры</p>
@@ -85,7 +81,6 @@
                 <input id="circleRad" type="number" min="1"
                        oninput="this.value=this.value.replace('/^\d+$/','');">
                 <br>
-                <button onclick="drawFigure('Circle')">нарисовать фигуру</button>
             </div>
             <div class="figureForm" id="figureForm6">
                 <p>координаты</p>
@@ -102,7 +97,6 @@
                 <input id="line2x" type="number" min="1" oninput="checkIfDecimalValue(this.id, this.value)">
                 <input id="line2y" type="number" min="1" oninput="checkIfDecimalValue(this.id, this.value)">
                 <br>
-                <button onclick="drawFigure('Line')">нарисовать фигуру</button>
             </div>
             <div class="figureForm" id="figureForm8">
                 <p>точка 1</p>
@@ -115,7 +109,6 @@
                 <input id="trian3x" type="number" min="1" oninput="checkIfDecimalValue(this.id, this.value)">
                 <input id="trian3y" type="number" min="1" oninput="checkIfDecimalValue(this.id, this.value)">
                 <br>
-                <button onclick="drawFigure('Triangle')">нарисовать фигуру</button>
             </div>
             <div class="figureForm" id="figureForm9">
                 <p>начальная точка</p>
@@ -127,15 +120,15 @@
                 <p>текст</p>
                 <input type="text" id="figureText">
                 <br>
-                <button onclick="drawFigure('Text')">нарисовать фигуру</button>
             </div>
+            <button id="drawFigureButton" onclick="drawFigure()">Нарисовать фигуру</button>
         </div>
         <div class="authorForm">
             <p>Ваше имя:</p>
             <input type="text" id="authorName" class="authorInput"
                    oninput="this.value=this.value.replace(/[^A-Za-z\s]/g,'');">
             <br>
-            <button onclick="saveToDatabase()">Сохранить</button>
+            <button id="saveToDbButton" onclick="saveToDatabase()">Сохранить</button>
         </div>
     </div>
 </div>
