@@ -65,10 +65,29 @@ const uploadImage = () =>{
     GetResponse('uploadImage');
 }
 
+const validateInputs = (id) => {
+    let x = true;
+    let n = 'figureForm' + id;
+    let div = document.getElementById(n).querySelectorAll('input');
+    div.forEach(
+        i => {
+            if (i.value == "") {
+                x = false;
+            }
+        }
+    );
+    return x
+}
+
 const drawFigure = () => {
     let type = selectFigure.value;
+    if (validateInputs(type) == false) {
+        alert("Заполните все поля");
+        return
+    }
     let data;
     if (type == 1) {
+
         data = {
             type : 'Square',
             color: selectColor.value,
@@ -178,6 +197,10 @@ const drawFigure = () => {
 }
 
 const saveToDatabase = () => {
+    if (authorName.value == "") {
+        alert("Введите имя");
+        return
+    }
     let data = {
         author : authorName.value,
     };
