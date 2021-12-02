@@ -16,9 +16,8 @@ class Oval extends Figure
         $this->height = $dots['height'];
         $this->width = $dots['width'];
     }
-    public function addFigure($imgFile)
+    public function addFigure()
     {
         imageellipse($this->image,$this->x1, $this->y1, $this->width, $this->height, $this->color);
-        imagepng($this->image, $imgFile);
     }
 }

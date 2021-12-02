@@ -24,12 +24,11 @@ class Parallelogram extends Figure
         $this->x4 = $dots['x4'];
         $this->y4 = $dots['y4'];
     }
-    public function addFigure($imgFile)
+    public function addFigure()
     {
         imageline($this->image,$this->x1, $this->y1, $this->x2, $this->y2, $this->color);
         imageline($this->image,$this->x2, $this->y2, $this->x4, $this->y4, $this->color);
         imageline($this->image,$this->x3, $this->y3, $this->x4, $this->y4, $this->color);
         imageline($this->image,$this->x3, $this->y3, $this->x1, $this->y1, $this->color);
-        imagepng($this->image, $imgFile);
     }
 }
