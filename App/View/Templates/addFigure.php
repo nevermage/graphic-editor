@@ -87,7 +87,6 @@
                 <input id="dotX" type="number" min="1" oninput="checkIfDecimalValue(this.id, this.value)">
                 <input id="dotY" type="number" min="1" oninput="checkIfDecimalValue(this.id, this.value)">
                 <br>
-                <button onclick="drawFigure('Dot')">нарисовать фигуру</button>
             </div>
             <div class="figureForm" id="figureForm7">
                 <p>точка 1</p>
