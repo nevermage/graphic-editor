@@ -14,9 +14,8 @@ class Circle extends Figure
         $this->y1 = $dots['y1'];
         $this->radius = $dots['radius'];
     }
-    public function addFigure($imgFile)
+    public function addFigure()
     {
         imageellipse($this->image,$this->x1, $this->y1, $this->radius*2, $this->radius*2, $this->color);
-        imagepng($this->image, $imgFile);
     }
 }

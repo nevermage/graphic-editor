@@ -8,6 +8,8 @@ abstract class Figure
     public $y1;
     public $color;
     public $image;
+    public $type;
+    public $imgName;
 
     public function __construct($file, $imageType)
     {
@@ -17,6 +19,8 @@ abstract class Figure
         if ($imageType == 'jpg') {
             $this->image = imagecreatefromjpeg($file);
         }
+        $this->type = $imageType;
+        $this->imgName = $file;
     }
     public function setColor(string $id)
     {
@@ -40,6 +44,15 @@ abstract class Figure
         }
     }
 
+    public function saveImage()
+    {
+        if ($this->type == 'png') {
+            imagepng($this->image, $this->imgName);
+        }
+        if ($this->type == 'jpg') {
+            imagejpeg($this->image, $this->imgName);
+        }
+    }
     abstract public function setDots($dots);
-    abstract public function addFigure($imgFile);
+    abstract public function addFigure();
 }

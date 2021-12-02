@@ -7,8 +7,6 @@ session_start();
 
 require '../vendor/autoload.php';
 use Classes\Router;
-use Classes\Pictures;
-use Classes\Image;
 
 $route = new Router();
 $route->getDestination();
