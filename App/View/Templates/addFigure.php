@@ -131,3 +131,4 @@
         </div>
     </div>
 </div>
+<script src="js/image.js"></script>
