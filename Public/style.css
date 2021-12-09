@@ -1,0 +1,111 @@
+
+
+body {
+    background: #e5e5e5;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: #fff;
+    position: absolute;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    height: 550px;
+    width: 900px;
+    top: 15%;
+    left: calc(50% - 471px);
+}
+.imgSelector, .addFigures {
+    padding: 10px;
+}
+.imgContainer {
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: #e5e5e5;
+}
+.imgContainer img {
+    max-height: 400px;
+    height: 100%;
+}
+.addFigures select {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.figureForm{
+    display: none;
+}
+.addFigures input {
+    margin-bottom: 5px;
+    width: 80px;
+}
+.addFigures p {
+    margin: 0;
+}
+.rightBox {
+    display: grid;
+    grid-template-rows: 1fr min-content;
+}
+.authorInput {
+    font-size: 18px;
+    padding: 2px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+.authorForm button{
+    font-size: 16px;
+    padding: 5px;
+    width: 100px;
+}
+.authorForm p {
+    font-size: 19px;
+}
+
+.allFiguresList {
+    padding: 10px;
+    border-radius: 9px;
+    width: 50%;
+    margin: 100px auto;
+    background: #555555;
+}
+
+.Figure {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 10px;
+    background: #666666;
+    border-radius: 9px;
+}
+.Figure:hover {
+    background: #777777;
+}
+
+.allFiguresListImageContainer {
+    padding: 10px;
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+}
+.allFiguresListImageContainer img {
+    max-width: 300px;
+    width: 100%;
+}
+.figureAuthor {
+    padding: 10px 60px;
+    color: #e5e5e5;
+}
+.Figure h1 {
+    color: #e5e5e5;
+}
+.svgImageContainer {
+    padding: 10px;
+    height: 280px;
+    width: 280px;
+    overflow: hidden;
+}
+.allFiguresListImageContainer svg, .allFiguresListImageContainer svg image {
+    height: 200px ;
+    width: 200px;
+}
